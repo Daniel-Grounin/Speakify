@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload PDF</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #f8f9fa, #e0e0e0);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            max-width: 600px;
+            padding: 30px;
+            background: #fff;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+        .btn {
+            margin-top: 10px;
+            width: 100%;
+            padding: 10px 0;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .btn:hover {
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+        .btn-success:hover {
+            background-color: #28a745;
+        }
+        .btn-info:hover {
+            background-color: #17a2b8;
+        }
+        .btn-warning:hover {
+            background-color: #ffc107;
+        }
+        h1 {
+            font-weight: 700;
+            color: #0056b3;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Speakify - Upload PDF</h1>
+        <div class="text-right mb-3">
+            <a href="/pdfs/" class="btn btn-secondary"><i class="fas fa-list"></i> View Uploaded PDFs</a>
+        </div>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_file" class="font-weight-bold">Choose a PDF file:</label>
+                {{ form.file }}
+            </div>
+            <button type="submit" class="btn btn-primary"><i class="fas fa-upload"></i> Upload</button>
+        </form>
+
+        <!-- New Functionality Buttons -->
+        <div class="mt-4">
+            <a href="/convert-all-pdfs/" class="btn btn-success"><i class="fas fa-sync"></i> Convert All PDFs to Audio</a>
+            <a href="/delete-all-pdfs/" class="btn btn-danger mt-3"><i class="fas fa-trash-alt"></i> Delete All PDFs</a>
+            <a href="/preferences/" class="btn btn-info mt-3"><i class="fas fa-cog"></i> Preferences</a>
+           <a href="/help/" class="btn btn-warning"><i class="fas fa-question-circle"></i> Help / Instructions</a>
+
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
